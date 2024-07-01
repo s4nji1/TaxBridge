@@ -12,7 +12,7 @@ include 'DataBase.php';
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
 <body>
-    <div class="wrapper">
+<div class="wrapper">
         <header>
             <div class="logo">
                 <img src="Images/logo.png" alt="Your Logo">
@@ -22,8 +22,7 @@ include 'DataBase.php';
         <br>
 
         <div class="content">
-        <a href="ClientSignup.php"><button>Create new client account</button></a>
-        <a href="AdminLogin.php"><button>Logout</button></a>
+            
         </div>
 
         <footer>
@@ -44,5 +43,6 @@ include 'DataBase.php';
         </footer>
     </div>
 
+    
 </body>
 </html>
