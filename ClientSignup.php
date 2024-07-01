@@ -1,5 +1,26 @@
 <?php 
 include 'DataBase.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $user = $_POST['username'];
+    $password = $_POST['password'];
+    
+    $user = mysqli_real_escape_string($conn, $user);
+    $password = mysqli_real_escape_string($conn, $password);
+
+    if (empty($user) || empty($password)) {
+        echo 'Please enter username and password!';
+    } else {
+
+        $user = mysqli_real_escape_string($conn, $user);
+        $password = mysqli_real_escape_string($conn, $password);
+
+
+        $sql = "INSERT INTO clientlogin (username, password) VALUES ('$user', '$password')";
+        mysqli_query($conn, $sql);
+        echo "You are registered!";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +28,8 @@ include 'DataBase.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tax Bridge</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
 <body>
@@ -22,7 +43,14 @@ include 'DataBase.php';
         <br>
 
         <div class="content">
-            
+            <form action="ClientSignup.php" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <input type="submit" value="Signup">
+            </form>
+            <a href="Admin.php"><button>Back</button></a>
         </div>
 
         <footer>

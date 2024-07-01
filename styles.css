@@ -1,0 +1,74 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.logo img {
+    height: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 0; /* Reduced padding */
+    font-size: 14px; /* Smaller font size */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px 0; /* Reduced padding */
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 5px; /* Reduced margin */
+    min-width: 200px;
+}
+
+.footer-section p {
+    margin: 2px 0; /* Reduced margin */
+}
+
+.footer-bottom {
+    background-color: #222;
+    color: #aaa;
+    padding: 5px 0; /* Reduced padding */
+}
