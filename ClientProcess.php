@@ -1,5 +1,21 @@
 <?php 
 include 'DataBase.php';
+
+$filename = $_FILES['file']['name'];
+$destination = "Uploads/" . $filename;
+$uploadOk = 1;
+$fileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+} else {
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
+        echo "The file " . htmlspecialchars(basename($filename)) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,18 +38,7 @@ include 'DataBase.php';
         <br>
 
         <div class="content">
-            <h1>Welcome to TaxBridge</h1>
-            <p>Your trusted partner in simplifying taxation and financial management.</p>
-
-        <form action="ClientProcess.php" method="post" enctype="multipart/form-data">
-            <label for="file">File</label>
-            <input type="file" name="file" id="file"><br>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" ></textarea><br>
-            <input type="submit" value="Upload">
-        </form>
-
-        <a href="ClientLogin.php"><button>Logout</button></a>
+            <a href="Client.php"><button>Back</button></a>
         </div>
 
         <footer>
