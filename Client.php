@@ -25,12 +25,12 @@ include 'DataBase.php';
             <h1>Welcome to TaxBridge</h1>
             <p>Your trusted partner in simplifying taxation and financial management.</p>
 
-        <label for="image">Image</label>
-        <input type="file" id="image"><br>
-        <label for="file">File</label>
-        <input type="file"><br>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="4" ></textarea><br>
+        <form action="Admin.php" method="post">
+            <label for="file">File</label>
+            <input type="file"><br>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" ></textarea><br>
+        </form>
 
         <a href="ClientLogin.php"><button>Logout</button></a>
         </div>
