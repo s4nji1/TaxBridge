@@ -1,5 +1,7 @@
 <?php 
 include 'DataBase.php';
+session_start();
+$sess = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +24,9 @@ include 'DataBase.php';
         <br>
 
         <div class="content">
-            <h1>Welcome to TaxBridge</h1>
-            <p>Your trusted partner in simplifying taxation and financial management.</p>
+            <h1>Hello <?php echo $sess ; ?> </h1>
+            <h3>Welcome to TaxBridge</h1>
+            <p id="client">Your trusted partner in simplifying taxation and financial management.</p>
 
         <form action="ClientProcess.php" method="post" enctype="multipart/form-data">
             <label for="file">File</label>

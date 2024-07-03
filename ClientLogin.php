@@ -1,10 +1,13 @@
 <?php 
 include 'DataBase.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = $_POST['username'];
     $password = $_POST['password'];
+
+    $_SESSION['username'] = $user;
 
     if (empty($user) || empty($password)) {
         echo 'Please enter username and password!';
@@ -62,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" name="password" id="password">
                 <input type="submit" value="Login">
             </form>
+            <a href="index.html"><button>Back</button></a>
         </div>
 
         <footer>
