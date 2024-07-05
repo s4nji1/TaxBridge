@@ -40,33 +40,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Bridge</title>
+    <title>Tax Bridge - Admin LogIn</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+    .back-button {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
 <body>
 
-    <div class="wrapper">
-        <header>
+    <div>
+        <header class="bg-dark text-white text-center py-3">
             <div class="logo">
-                <img src="Images/logo.png" alt="Your Logo">
+                <img src="Images/logo.png" alt="Your Logo" class="img-fluid" style="height: 60px;">
             </div>
         </header>
 
-        <br>
-
-        <div class="content">
-            <form action="AdminLogin.php" method="post">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-                <input type="submit" value="Login">
+        <div class="content mt-5">
+            <form action="AdminLogin.php" method="post" class="mx-auto" style="max-width: 400px;">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <input type="submit" value="Login" class="btn btn-dark btn-block">
             </form>
-            <a href="index.html"><button>Back</button></a>
+            <a href="index.html" class="btn btn-danger btn-block btn-sm mt-2 col-2 back-button">Back</a>
         </div>
 
-        <footer>
+        <footer class="bg-dark text-white text-center py-3 mt-5">
             <div class="footer-content">
                 <div class="footer-section about">
                     <h2>About Us</h2>

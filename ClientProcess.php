@@ -1,63 +1,64 @@
-<?php 
+<?php
 include 'DataBase.php';
+session_start();
 
-$filename = $_FILES['file']['name'];
-$destination = "Uploads/" . $filename;
-$uploadOk = 1;
-$fileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_SESSION['username'];
+    $message = $_POST['message'];
 
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-} else {
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
-        echo "The file " . htmlspecialchars(basename($filename)) . " has been uploaded.";
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+        $file_name = $_FILES['file']['name'];
+        $file_tmp = $_FILES['file']['tmp_name'];
+        $file_path = 'uploads/' . $file_name;
+
+        move_uploaded_file($file_tmp, $file_path);
+
+        $data_file = 'uploads_data.json';
+        $uploads_data = [];
+        if (file_exists($data_file)) {
+            $uploads_data = json_decode(file_get_contents($data_file), true);
+        }
+
+        $uploads_data[] = [
+            'name' => $username,
+            'message' => $message,
+            'file_path' => $file_path
+        ];
+
+        file_put_contents($data_file, json_encode($uploads_data));
+
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo 'Error uploading file!';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="refresh" content="2;url=Client.php">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Bridge</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>File Upload Status</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .message {
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
-        <header>
-            <div class="logo">
-                <img src="Images/logo.png" alt="Your Logo">
-            </div>
-        </header>
-
-        <br>
-
-        <div class="content">
-            <a href="Client.php"><button>Back</button></a>
-        </div>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h2>About Us</h2>
-                    <p>Welcome to TaxBridge, where we simplify taxation and financial management with innovative tools and expert support for a seamless client-accountant experience.</p>
-                </div>
-                <div class="footer-section contact">
-                    <h2>Contact Us</h2>
-                    <p>Email: contact@taxbridge.com</p>
-                    <p>Phone: +212 524 88 ** **</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2024 TaxBridge | All Rights Reserved
-            </div>
-        </footer>
+    <div class="message bg-light">
+        <h1>File uploaded successfully!</h1>
+        <p>Redirecting to the client page...</p>
     </div>
-
 </body>
 </html>
