@@ -18,6 +18,13 @@ include 'DataBase.php';
             <div class="logo">
                 <img src="Images/logo.png" alt="Your Logo" class="img-fluid">
             </div>
+            <div class="container">
+            <div class="text-right">
+                <a href="ClientSignup.php" class="text-success">Create Client Account</a>
+                <?php echo " | " ?>
+                <a href="AdminLogin.php" class="text-danger">Logout</a>
+            </div>
+        </div>
         </header>
 
         <div class="container-fluid">
@@ -50,10 +57,6 @@ include 'DataBase.php';
                 <div class="col-md-9 main-content" style="width: 50%;">
                     <iframe id="document-viewer" style="width: 100%; height: calc(100vh - 120px);" frameborder="0"></iframe>
                 </div>
-            </div>
-            <div class="row justify-content-center mt-3">
-                <a href="AdminLogin.php" class="btn btn-danger mr-2">Logout</a>
-                <a href="ClientSignup.php" class="btn btn-success">Create Client Account</a>
             </div>
         </div>
 

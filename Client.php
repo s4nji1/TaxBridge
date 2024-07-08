@@ -23,7 +23,7 @@ $sess = $_SESSION['username'];
         <div class="container">
             <div class="text-right">
                 <?php echo "session opened by " . $sess . " | "; ?>
-                <a href="ClientLogin.php" class="logout-button btn btn-outline-danger">Logout</a>
+                <a href="ClientLogin.php" class="text-danger">Logout</a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@ $sess = $_SESSION['username'];
 
     <div class="content mt-5 text-center">
         <h3>Welcome to TaxBridge</h3>
-        <p id="client">Your trusted partner in simplifying taxation and financial management.</p>
+        <p id="client">Your trusted advisor for simplifying tax and finance.</p>
 
         <form action="ClientProcess.php" method="post" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
             <div class="form-group">
