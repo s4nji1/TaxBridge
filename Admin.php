@@ -20,9 +20,9 @@ include 'DataBase.php';
             </div>
             <div class="container">
             <div class="text-right">
-                <a href="ClientSignup.php" class="text-success">Create Client Account</a>
+                <a href="ClientSignup.php" class="text-success">Create Client Account &nbsp; </a>
                 <?php echo " | " ?>
-                <a href="AdminLogin.php" class="text-danger">Logout</a>
+                <a href="AdminLogin.php" class="text-danger"> &nbsp; Logout</a>
             </div>
         </div>
         </header>

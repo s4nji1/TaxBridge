@@ -22,8 +22,8 @@ $sess = $_SESSION['username'];
         </div>
         <div class="container">
             <div class="text-right">
-                <?php echo "session opened by " . $sess . " | "; ?>
-                <a href="ClientLogin.php" class="text-danger">Logout</a>
+                <?php echo "session opened by " . $sess . "&nbsp;  | "; ?>
+                <a href="ClientLogin.php" class="text-danger">&nbsp; Logout</a>
             </div>
         </div>
 
