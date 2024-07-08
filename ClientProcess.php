@@ -2,6 +2,12 @@
 include 'DataBase.php';
 session_start();
 
+if (!isset($_SESSION['file_counter'])) {
+    $_SESSION['file_counter'] = 1;
+} else {
+    $_SESSION['file_counter']++;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_SESSION['username'];
     $message = $_POST['message'];
@@ -9,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
-        $file_path = 'uploads/' . $file_name;
+        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        $file_path = 'uploads/facture' . $_SESSION['file_counter'] . '.' . $file_ext;
 
         move_uploaded_file($file_tmp, $file_path);
 
