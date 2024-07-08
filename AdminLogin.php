@@ -42,13 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Bridge - Admin LogIn</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-    .back-button {
-        display: block;
-        margin: 0 auto;
-        width: fit-content;
-    }
-    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
@@ -73,10 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <input type="submit" value="Login" class="btn btn-dark btn-block">
             </form>
-            <a href="index.html" class="btn btn-danger btn-block btn-sm mt-2 col-2 back-button">Back</a>
         </div>
 
-        <footer class="bg-dark text-white text-center py-3 mt-5">
+        <footer class="bg-dark text-white text-center py-5   mt-5">
             <div class="footer-content">
                 <div class="footer-section about">
                     <h2>About Us</h2>
