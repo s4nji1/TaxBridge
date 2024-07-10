@@ -19,12 +19,12 @@ include 'DataBase.php';
                 <img src="Images/logo.png" alt="Your Logo" class="img-fluid">
             </div>
             <div class="container">
-            <div class="text-right">
-                <a href="ClientSignup.php" class="text-success">Create Client Account &nbsp; </a>
-                <?php echo " | " ?>
-                <a href="AdminLogin.php" class="text-danger"> &nbsp; Logout</a>
+                <div class="text-right">
+                    <a href="ClientSignup.php" class="text-success">Create Client Account &nbsp; </a>
+                    <?php echo " | " ?>
+                    <a href="AdminLogin.php" class="text-danger"> &nbsp; Logout</a>
+                </div>
             </div>
-        </div>
         </header>
 
         <div class="container-fluid">
@@ -35,6 +35,7 @@ include 'DataBase.php';
                             <tr>
                                 <th>Name</th>
                                 <th>Message</th>
+                                <th>Type</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,7 @@ include 'DataBase.php';
                             <tr onclick="viewDocument('<?php echo htmlspecialchars($upload['file_path']); ?>')">
                                 <td><?php echo htmlspecialchars($upload['name']); ?></td>
                                 <td><?php echo nl2br(htmlspecialchars($upload['message'])); ?></td>
+                                <td><?php echo htmlspecialchars($upload['type']); ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

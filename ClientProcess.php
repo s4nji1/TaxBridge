@@ -11,6 +11,7 @@ if (!isset($_SESSION['file_counter'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_SESSION['username'];
     $message = $_POST['message'];
+    $type = $_POST['type'];
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $file_name = $_FILES['file']['name'];
@@ -29,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $uploads_data[] = [
             'name' => $username,
             'message' => $message,
-            'file_path' => $file_path
+            'file_path' => $file_path,
+            'type' => $type
         ];
 
         file_put_contents($data_file, json_encode($uploads_data));

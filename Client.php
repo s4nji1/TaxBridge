@@ -15,7 +15,7 @@ $sess = $_SESSION['username'];
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
 <body>
-<div >
+<div>
     <header class="bg-dark text-white text-center py-3">
         <div class="logo">
             <img src="Images/logo.png" alt="Your Logo" class="img-fluid" style="height: 60px;">
@@ -26,7 +26,6 @@ $sess = $_SESSION['username'];
                 <a href="ClientLogin.php" class="text-danger">&nbsp; Logout</a>
             </div>
         </div>
-
     </header>
 
     <div class="content mt-5 text-center">
@@ -37,6 +36,14 @@ $sess = $_SESSION['username'];
             <div class="form-group">
                 <label for="file">File</label>
                 <input type="file" name="file" id="file" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select id="type" name="type" class="form-control">
+                    <option value="Bank statement">Bank statement</option>
+                    <option value="Invoice">Invoice</option>
+                    <option value="Sales receipt">Sales receipt</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
