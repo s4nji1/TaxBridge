@@ -34,16 +34,16 @@ $sess = $_SESSION['username'];
 
         <form action="ClientProcess.php" method="post" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
             <div class="form-group">
-                <label for="file">File</label>
-                <input type="file" name="file" id="file" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="type">Type</label>
-                <select id="type" name="type" class="form-control">
+                <label for="file_type">Type</label>
+                <select id="file_type" name="file_type" class="form-control">
                     <option value="Bank statement">Bank statement</option>
                     <option value="Invoice">Invoice</option>
                     <option value="Sales receipt">Sales receipt</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="file">File</label>
+                <input type="file" name="file" id="file" class="form-control">
             </div>
             <div class="form-group">
                 <label for="message">Message</label>

@@ -30,34 +30,37 @@ include 'DataBase.php';
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 sidebar bg-light py-3" style="width: 50%;">
+                <div class="col-md-5 sidebar bg-light py-3">
                     <table id="uploadsTable" class="table table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Name</th>
                                 <th>Message</th>
                                 <th>Type</th>
+                                <th>File name</th>
+                                <th>Created at</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            $data_file = 'uploads_data.json';
-                            $uploads_data = [];
-                            if (file_exists($data_file)) {
-                                $uploads_data = json_decode(file_get_contents($data_file), true);
+                        <?php
+                            $query = "SELECT c.username, d.message, d.file_type, d.path, d.created_at,d.file_name FROM documents d JOIN clientlogin c ON d.client_id = c.identifier";
+                            $result = mysqli_query($conn, $query);
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr onclick=\"viewDocument('{$row['path']}')\">";
+                                echo "<td>" . htmlspecialchars($row['username']) . "</td>";
+                                echo "<td>" . nl2br(htmlspecialchars($row['message'])) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['file_type']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['file_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                echo "</tr>";
                             }
-
-                            foreach ($uploads_data as $upload): ?>
-                            <tr onclick="viewDocument('<?php echo htmlspecialchars($upload['file_path']); ?>')">
-                                <td><?php echo htmlspecialchars($upload['name']); ?></td>
-                                <td><?php echo nl2br(htmlspecialchars($upload['message'])); ?></td>
-                                <td><?php echo htmlspecialchars($upload['type']); ?></td>
-                            </tr>
-                            <?php endforeach; ?>
+                            mysqli_close($conn);
+                            ?>
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-9 main-content" style="width: 50%;">
+                <div class="col-md-7 main-content" style="width: 50%;">
                     <iframe id="document-viewer" style="width: 100%; height: calc(100vh - 120px);" frameborder="0"></iframe>
                 </div>
             </div>
@@ -83,6 +86,11 @@ include 'DataBase.php';
         </footer>
     </div>
 
+    <script>
+        function viewDocument(filePath) {
+            document.getElementById('document-viewer').src = filePath;
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -91,10 +99,6 @@ include 'DataBase.php';
         $(document).ready(function() {
             $('#uploadsTable').DataTable();
         });
-
-        function viewDocument(filePath) {
-            document.getElementById('document-viewer').src = filePath;
-        }
     </script>
 </body>
 </html>

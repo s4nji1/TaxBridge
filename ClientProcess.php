@@ -2,39 +2,32 @@
 include 'DataBase.php';
 session_start();
 
-if (!isset($_SESSION['file_counter'])) {
-    $_SESSION['file_counter'] = 1;
-} else {
-    $_SESSION['file_counter']++;
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_SESSION['username'];
     $message = $_POST['message'];
-    $type = $_POST['type'];
+    $file_type = $_POST['file_type'];
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
         $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        $file_path = 'uploads/facture' . $_SESSION['file_counter'] . '.' . $file_ext;
+
+        $query = "SELECT COUNT(id) as count FROM documents";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $count = $row['count'] + 1;
+        $file_path = 'uploads/facture' . $count . '.' . $file_ext;
 
         move_uploaded_file($file_tmp, $file_path);
 
-        $data_file = 'uploads_data.json';
-        $uploads_data = [];
-        if (file_exists($data_file)) {
-            $uploads_data = json_decode(file_get_contents($data_file), true);
-        }
+        $query = "SELECT identifier FROM clientlogin WHERE username = '$username'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $client_id = $row['identifier'];
 
-        $uploads_data[] = [
-            'name' => $username,
-            'message' => $message,
-            'file_path' => $file_path,
-            'type' => $type
-        ];
-
-        file_put_contents($data_file, json_encode($uploads_data));
+        $query = "INSERT INTO documents (client_id, message, path, file_name, file_type) VALUES ('$client_id', '$message', '$file_path', '$file_name', '$file_type')";
+        mysqli_query($conn, $query);
+        mysqli_close($conn);
 
     } else {
         echo 'Error uploading file!';
