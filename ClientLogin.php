@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Bridge - Client LogIn</title>
+    <title>Tax Bridge - Client Login</title>
     <link rel="stylesheet" href="styles.css">
     <style>
     .back-button {
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     <div class="content mt-5">
+        <h3 class="text-center">Client Login</h3>
         <form action="ClientLogin.php" method="post" class="mx-auto" style="max-width: 400px;">
             <div class="form-group">
                 <label for="username">Username</label>

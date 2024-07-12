@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Bridge - Admin LogIn</title>
+    <title>Tax Bridge - Admin Login</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="Images/logo.png">
@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </header>
 
         <div class="content mt-5">
+            <h3 class="text-center">Admin Login</h3>
             <form action="AdminLogin.php" method="post" class="mx-auto" style="max-width: 400px;">
                 <div class="form-group">
                     <label for="username">Username</label>
