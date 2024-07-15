@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
         $count = $row['count'] + 1;
-        $file_path = 'uploads/facture' . $count . '.' . $file_ext;
+        $file_path = 'uploads/document' . $count . '.' . $file_ext;
 
         move_uploaded_file($file_tmp, $file_path);
 
