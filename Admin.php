@@ -29,6 +29,7 @@ include 'DataBase.php';
         </header>
 
         <div class="container-fluid">
+           <h1 class="text-center mt-3 mb-3">Admin Dashboard</h1> 
             <div class="row">
                 <div class="col-md-5 sidebar bg-light py-3">
                     <table id="uploadsTable" class="table table-hover">
